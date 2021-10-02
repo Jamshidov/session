@@ -1,0 +1,32 @@
+{% extends 'shopapp/base.html' %}
+{% load cart %}
+{% block content %}
+    <div class="row">
+        <h1>Cart</h1>
+        <p>
+            <span class="badge rounded-pill bg-danger">{{ count }}</span> items in Cart
+        </p><hr/>
+    </div>
+    <div class="row">
+        {% for item in items %}
+            <h4>{{ item.name }}</h4><br/>
+            <h4>{{ item.price }}</h4><br/>
+            <h4>{{ item.quantity }}</h4><br/>
+            <h4>sum {{ item.price|summary:item.quantity }} $</h4><br/>
+            <div class="p-3">
+                <a href="{% url 'shopapp:item_increment' item.id %}"><button class="btn btn-secondary">+</button></a>
+                <a href="{% url 'shopapp:item_decrement' item.id %}"><button class="btn btn-secondary">-</button></a>
+                <a href="{% url 'shopapp:item_remove' item.id  %}"><button class="btn btn-danger">delete</button></a>
+            </div><hr/>
+        {% endfor %}
+    </div>
+    <hr/>
+    <div class="row">
+        <a href="{% url 'shopapp:cart_clear' %}"><button class="btn btn-danger">Cart Clear</button></a>
+        <a href="{% url 'shopapp:home' %}"><button class="mt-2 btn btn-primary">home</button></a>
+    </div>
+    <hr/>
+    <div class="row p-3">
+        <h3>Total price $ {{ total_price }}</h3>
+    </div>
+{% endblock %}

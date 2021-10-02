@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        {{ item.name }}
+        {{ item.age }}
+        <a href="{% url 'cart:item_add' %}"><button>+</button></a>
+        <a href="{% url 'cart:item_decrement' %}"><button>-</button></a>
+        <a href="{% url 'cart:remove' %}"><button>clear</button></a>
+        <div class="row">
+            <h2><a href="{% url 'cart:cart_clear' %}"><button>Cart Clear</button></a></h2>
+            <a href="{% url 'cart:homepage' %}">Home</a>
+        </div>
+    </div>
+</body>
+</html>

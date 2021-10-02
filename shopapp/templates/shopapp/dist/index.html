@@ -1,0 +1,17 @@
+{% extends 'shopapp/base.html' %}
+{% block content %}
+    <div class="row">
+        <h1>Home</h1>
+        {% for product in products %}
+            <div>
+                <p><h3>{{ product.name }}</h3></p>
+                <a href="{% url 'shopapp:item_add' product.id %}"><button class="btn btn-success">add</button></a>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row mt-2">
+        <a href="{% url 'shopapp:on-cart' %}"><button class="btn btn-primary">Cart</button></a>
+    </div>
+{% endblock %}
+
+
